@@ -1,110 +1,163 @@
 <?php
 
 include_once 'functions.php';
-if (!isset($_GET['cron'])) {
+
+if (!isset(filter_input(INPUT_GET, 'cron'))) {
 //header('Content-Disposition: attachment; filename="signature_generated_by_Revenge.png"');
 }
 $image = imagecreatetruecolor(450, 80);
 
 $TBC = FALSE;
-if (isset($_GET['realm'])) {
-    $realm = $_GET['realm'];
-    if ($realm == "Ares")
-        $TBC = TRUE;
-}
-if (isset($_GET['name']))
-    $name = $_GET['name'];
-if (isset($_GET['level']))
-    $level = $_GET['level'];
-if (isset($_GET['frakcia']))
-    $frakcia = $_GET['frakcia'];
-if (isset($_GET['class']))
-    $class = $_GET['class'];
-if (isset($_GET['talents1']))
-    $talents1 = ucwords($_GET['talents1']);
-if (isset($_GET['talents2']))
-    $talents2 = ucwords($_GET['talents2']);
-if (isset($_GET['achievy']))
-    $achievy = $_GET['achievy'];
-if (isset($_GET['achievyearn']))
-    $achievyearn = $_GET['achievyearn'];
-if (isset($_GET['achievytotal']))
-    $achievytotal = $_GET['achievytotal'];
-if (isset($_GET['prefix']))
-    $prefix = $_GET['prefix'];
-if (isset($_GET['suffix']))
-    $suffix = $_GET['suffix'];
-if (isset($_GET['guilda']))
-    $guilda = $_GET['guilda'];
-if (isset($_GET['honork']))
-    $honork = $_GET['honork'];
-if (isset($_GET['genderid']))
-    $genderId = $_GET['genderid'];
-if (isset($_GET['raceid']))
-    $raceId = $_GET['raceid'];
-if (isset($_GET['classid']))
-    $classId = $_GET['classid'];
-if (isset($_GET['armory_show']))
-    $armory_show = $_GET['armory_show'];
-if (isset($_GET['server_show']))
-    $server_show = $_GET['server_show'];
-if (isset($_GET['guilda_show']))
-    $guilda_show = $_GET['guilda_show'];
-if (isset($_GET['achievy_show']))
-    $achievy_show = $_GET['achievy_show'];
-if (isset($_GET['hk_show']))
-    $hk_show = $_GET['hk_show'];
-if (isset($_GET['level_show']))
-    $level_show = $_GET['level_show'];
-if (isset($_GET['spec_show']))
-    $spec_show = $_GET['spec_show'];
-if (isset($_GET['activeSpec']))
-    $activeSpec = $_GET['activeSpec'];
-if (isset($_GET['hp_show']))
-    $hp_show = $_GET['hp_show'];
-if (isset($_GET['mana_show']))
-    $mana_show = $_GET['mana_show'];
-if (isset($_GET['sph_show']))
-    $sph_show = $_GET['sph_show'];
-if (isset($_GET['ap_show']))
-    $ap_show = $_GET['ap_show'];
-if (isset($_GET['mrsc_show']))
-    $mrsc_show = $_GET['mrsc_show'];
-if (isset($_GET['dodge_show']))
-    $dodge_show = $_GET['dodge_show'];
-if (isset($_GET['parry_show']))
-    $parry_show = $_GET['parry_show'];
-if (isset($_GET['block_show']))
-    $block_show = $_GET['block_show'];
-if (isset($_GET['haste_show']))
-    $haste_show = $_GET['haste_show'];
 
-if (isset($_GET['hp']))
-    $hp = $_GET['hp'];
-if (isset($_GET['mana']))
-    $mana = $_GET['mana'];
-if (isset($_GET['sp']))
-    $sp = $_GET['sp'];
-if (isset($_GET['heal']))
-    $heal = $_GET['heal'];
-if (isset($_GET['ap']))
-    $ap = $_GET['ap'];
-if (isset($_GET['rap']))
-    $rap = $_GET['rap'];
-if (isset($_GET['mc']))
-    $mc = $_GET['mc'];
-if (isset($_GET['sc']))
-    $sc = $_GET['sc'];
-if (isset($_GET['rc']))
-    $rc = $_GET['rc'];
-if (isset($_GET['dodge']))
-    $dodge = $_GET['dodge'];
-if (isset($_GET['parry']))
-    $parry = $_GET['parry'];
-if (isset($_GET['block']))
-    $block = $_GET['block'];
-if (isset($_GET['haste']))
-    $haste = $_GET['haste'];
+if (isset(filter_input(INPUT_GET, 'realm'))) {
+    $realm = filter_input(INPUT_GET, 'realm');
+    if ($realm == "Ares") {
+        $TBC = TRUE;
+    }
+}
+
+if (isset(filter_input(INPUT_GET, 'name'))) {
+    $name = filter_input(INPUT_GET, 'name');
+}
+
+if (isset(filter_input(INPUT_GET, 'level'))) {
+    $level = filter_input(INPUT_GET, 'level');
+}
+
+if (isset(filter_input(INPUT_GET, 'frakcia'))) {
+    $frakcia = filter_input(INPUT_GET, 'frakcia');
+}
+
+if (isset(filter_input(INPUT_GET, 'class'))) {
+    $class = filter_input(INPUT_GET, 'class');
+}
+if (isset(filter_input(INPUT_GET, 'talents1'))) {
+    $talents1 = ucwords(filter_input(INPUT_GET, 'talents1'));
+}
+if (isset(filter_input(INPUT_GET, 'talents2'))) {
+    $talents2 = ucwords(filter_input(INPUT_GET, 'talents2'));
+}
+if (isset(filter_input(INPUT_GET, 'achievy'))) {
+    $achievy = filter_input(INPUT_GET, 'achievy');
+}
+if (isset(filter_input(INPUT_GET, 'achievyearn'))) {
+    $achievyearn = filter_input(INPUT_GET, 'achievyearn');
+}
+if (isset(filter_input(INPUT_GET, 'achievytotal'))) {
+    $achievytotal = filter_input(INPUT_GET, 'achievytotal');
+}
+if (isset(filter_input(INPUT_GET, 'prefix'))) {
+    $prefix = filter_input(INPUT_GET, 'prefix');
+}
+if (isset(filter_input(INPUT_GET, 'suffix'))) {
+    $suffix = filter_input(INPUT_GET, 'suffix');
+}
+if (isset(filter_input(INPUT_GET, 'guilda'))) {
+    $guilda = filter_input(INPUT_GET, 'guilda');
+}
+if (isset(filter_input(INPUT_GET, 'honork'))) {
+    $honork = filter_input(INPUT_GET, 'honork');
+}
+if (isset(filter_input(INPUT_GET, 'genderid'))) {
+    $genderId = filter_input(INPUT_GET, 'genderid');
+}
+if (isset(filter_input(INPUT_GET, 'raceid'))) {
+    $raceId = filter_input(INPUT_GET, 'raceid');
+}
+if (isset(filter_input(INPUT_GET, 'classid'))) {
+    $classId = filter_input(INPUT_GET, 'classid');
+}
+if (isset(filter_input(INPUT_GET, 'armory_show'))) {
+    $armory_show = filter_input(INPUT_GET, 'armory_show');
+}
+if (isset(filter_input(INPUT_GET, 'server_show'))) {
+    $server_show = filter_input(INPUT_GET, 'server_show');
+}
+if (isset(filter_input(INPUT_GET, 'guilda_show'))) {
+    $guilda_show = filter_input(INPUT_GET, 'guilda_show');
+}
+if (isset(filter_input(INPUT_GET, 'achievy_show'))) {
+    $achievy_show = filter_input(INPUT_GET, 'achievy_show');
+}
+if (isset(filter_input(INPUT_GET, 'hk_show'))) {
+    $hk_show = filter_input(INPUT_GET, 'hk_show');
+}
+if (isset(filter_input(INPUT_GET, 'level_show'))) {
+    $level_show = filter_input(INPUT_GET, 'level_show');
+}
+if (isset(filter_input(INPUT_GET, 'spec_show'))) {
+    $spec_show = filter_input(INPUT_GET, 'spec_show');
+}
+if (isset(filter_input(INPUT_GET, 'activeSpec'))) {
+    $activeSpec = filter_input(INPUT_GET, 'activeSpec');
+}
+if (isset(filter_input(INPUT_GET, 'hp_show'))) {
+    $hp_show = filter_input(INPUT_GET, 'hp_show');
+}
+if (isset(filter_input(INPUT_GET, 'mana_show'))) {
+    $mana_show = filter_input(INPUT_GET, 'mana_show');
+}
+if (isset(filter_input(INPUT_GET, 'sph_show'))) {
+    $sph_show = filter_input(INPUT_GET, 'sph_show');
+}
+if (isset(filter_input(INPUT_GET, 'ap_show'))) {
+    $ap_show = filter_input(INPUT_GET, 'ap_show');
+}
+if (isset(filter_input(INPUT_GET, 'mrsc_show'))) {
+    $mrsc_show = filter_input(INPUT_GET, 'mrsc_show');
+}
+if (isset(filter_input(INPUT_GET, 'dodge_show'))) {
+    $dodge_show = filter_input(INPUT_GET, 'dodge_show');
+}
+if (isset(filter_input(INPUT_GET, 'parry_show'))) {
+    $parry_show = filter_input(INPUT_GET, 'parry_show');
+}
+if (isset(filter_input(INPUT_GET, 'block_show'))) {
+    $block_show = filter_input(INPUT_GET, 'block_show');
+}
+if (isset(filter_input(INPUT_GET, 'haste_show'))) {
+    $haste_show = filter_input(INPUT_GET, 'haste_show');
+}
+
+if (isset(filter_input(INPUT_GET, 'hp'))) {
+    $hp = filter_input(INPUT_GET, 'hp');
+}
+if (isset(filter_input(INPUT_GET, 'mana'))) {
+    $mana = filter_input(INPUT_GET, 'mana');
+}
+if (isset(filter_input(INPUT_GET, 'sp'))) {
+    $sp = filter_input(INPUT_GET, 'sp');
+}
+if (isset(filter_input(INPUT_GET, 'heal'))) {
+    $heal = filter_input(INPUT_GET, 'heal');
+}
+if (isset(filter_input(INPUT_GET, 'ap'))) {
+    $ap = filter_input(INPUT_GET, 'ap');
+}
+if (isset(filter_input(INPUT_GET, 'rap'))) {
+    $rap = filter_input(INPUT_GET, 'rap');
+}
+if (isset(filter_input(INPUT_GET, 'mc'))) {
+    $mc = filter_input(INPUT_GET, 'mc');
+}
+if (isset(filter_input(INPUT_GET, 'sc'))) {
+    $sc = filter_input(INPUT_GET, 'sc');
+}
+if (isset(filter_input(INPUT_GET, 'rc'))) {
+    $rc = filter_input(INPUT_GET, 'rc');
+}
+if (isset(filter_input(INPUT_GET, 'dodge'))) {
+    $dodge = filter_input(INPUT_GET, 'dodge');
+}
+if (isset(filter_input(INPUT_GET, 'parry'))) {
+    $parry = filter_input(INPUT_GET, 'parry');
+}
+if (isset(filter_input(INPUT_GET, 'block'))) {
+    $block = filter_input(INPUT_GET, 'block');
+}
+if (isset(filter_input(INPUT_GET, 'haste'))) {
+    $haste = filter_input(INPUT_GET, 'haste');
+}
 global $posunto;
 $black = imagecolorallocate($image, 0, 0, 0);
 $farbaAchievy = imagecolorallocate($image, 0, 153, 0);
@@ -419,7 +472,7 @@ switch ($class) {
             case 'Subtlety': $spec2 = 'images/talents/rogue_subtlety.gif';
                 break;
             case 'Subletly': $spec2 = 'images/talents/rogue_subtlety.gif';
-                break;                
+                break;
             default: $spec2 = 'images/talents/blank.gif';
         }
         break;
@@ -654,7 +707,7 @@ if ($TBC == FALSE) {
     imagecopymerge($image, $spec2, 60, 55, 0, 0, $rozmerXS2, $rozmerYS2, 100);
 }
 
-if (!isset($_GET['cron'])) {
+if (!isset(filter_input(INPUT_GET, 'cron'))) {
     header("Content-type: image/png");
     imagepng($image); //zobrazi v prehliadaci
 }
@@ -662,4 +715,5 @@ if (!isset($_GET['cron'])) {
 /* SAVE FILE */
 imagepng($image, "signatures/" . $name . "_" . $realm . ".png"); //ulozi na local
 ImageDestroy($image);
-?>
+
+

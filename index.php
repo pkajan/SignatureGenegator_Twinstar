@@ -28,30 +28,30 @@
                     <input id="textove_pole" type="text" name="postava" value="<?= getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
                                 this.value = '';" required />
                     <select id="realm" name="realm">
-                        <option value="Hyperion" <?php SelectRealm("Hyperion"); ?>>Hyperion</option>
-                        <option value="Vesper" <?php SelectRealm("Vesper"); ?>>Vesper</option>
-                        <option value="Ares" <?php SelectRealm("Ares"); ?>>Ares</option>
+                        <option value="Hyperion" <?= SelectRealm("Hyperion"); ?>>Hyperion</option>
+                        <option value="Vesper" <?= SelectRealm("Vesper"); ?>>Vesper</option>
+                        <option value="Ares" <?= SelectRealm("Ares"); ?>>Ares</option>
                     </select>
                     <input type="submit" name="submit" class="button" /><br /><br />
                     <div id="skrtatka">
-                        <input id="<?php echo $i=1; ?>" onchange="Color()" type="checkbox" name="armory_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Use Armory picture</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="server_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show Server name</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="guilda_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show Guild name</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="achievy_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show Achievements</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="hk_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show HK</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="level_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show Level</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color()" type="checkbox" name="spec_show" value="1" checked="checked"/><span id="span<?php echo $i++; ?>"> Show Talent specs</span><br />
+                        <input id="<?= $i=1; ?>" onchange="Color()" type="checkbox" name="armory_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Use Armory picture</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="server_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show Server name</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="guilda_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show Guild name</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="achievy_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show Achievements</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="hk_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show HK</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="level_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show Level</span> |
+                        <input id="<?= $i; ?>" onchange="Color()" type="checkbox" name="spec_show" value="1" checked="checked"/><span id="span<?= $i++; ?>"> Show Talent specs</span><br />
                         <!-- Staty -->
                         <span>Only 4 options will be shown</span><br />
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="hp_show" value="1"<?php chcecked("hp_show"); ?>/><span id="span<?php echo $i++; ?>"> Health</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="mana_show" value="1"<?php chcecked("mana_show"); ?>/><span id="span<?php echo $i++; ?>"> Mana</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="sph_show" value="1"<?php chcecked("sph_show"); ?>/><span id="span<?php echo $i++; ?>"> Spell Power/Healing</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="ap_show" value="1"<?php chcecked("ap_show"); ?>/><span id="span<?php echo $i++; ?>"> Attack Power</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="mrsc_show" value="1"<?php chcecked("mrsc_show"); ?>/><span id="span<?php echo $i++; ?>"> Critical</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="dodge_show" value="1"<?php chcecked("dodge_show"); ?>/><span id="span<?php echo $i++; ?>"> Dodge</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="parry_show" value="1"<?php chcecked("parry_show"); ?>/><span id="span<?php echo $i++; ?>"> Parry</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="block_show" value="1"<?php chcecked("block_show"); ?>/><span id="span<?php echo $i++; ?>"> Block</span> |
-                        <input id="<?php echo $i; ?>" onchange="Color();countCheckedBoxes(this);" <?php echo $chBT; ?> name="haste_show" value="1"<?php chcecked("haste_show"); ?>/><span id="span<?php echo $i++; ?>"> Haste</span>
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="hp_show" value="1"<?= chcecked("hp_show"); ?>/><span id="span<?= $i++; ?>"> Health</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="mana_show" value="1"<?= chcecked("mana_show"); ?>/><span id="span<?= $i++; ?>"> Mana</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="sph_show" value="1"<?= chcecked("sph_show"); ?>/><span id="span<?= $i++; ?>"> Spell Power/Healing</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="ap_show" value="1"<?= chcecked("ap_show"); ?>/><span id="span<?= $i++; ?>"> Attack Power</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="mrsc_show" value="1"<?= chcecked("mrsc_show"); ?>/><span id="span<?= $i++; ?>"> Critical</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="dodge_show" value="1"<?= chcecked("dodge_show"); ?>/><span id="span<?= $i++; ?>"> Dodge</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="parry_show" value="1"<?= chcecked("parry_show"); ?>/><span id="span<?= $i++; ?>"> Parry</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="block_show" value="1"<?= chcecked("block_show"); ?>/><span id="span<?= $i++; ?>"> Block</span> |
+                        <input id="<?= $i; ?>" onchange="Color();countCheckedBoxes(this);" <?= $chBT; ?> name="haste_show" value="1"<?= chcecked("haste_show"); ?>/><span id="span<?= $i++; ?>"> Haste</span>
                     </div>
                 </div>
             </form>

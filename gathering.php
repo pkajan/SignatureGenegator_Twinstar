@@ -3,9 +3,10 @@
 $aktualneUmiestnenie = "http://tss.6f.sk";
 include_once 'functions.php';
 if ($_POST) {
-    $realm = $_POST['realm'];
-    $postava = ucfirst(strtolower(str_replace(" ", "", $_POST['postava'])));
-    if (isset($_POST['CRON'])) {
+
+    $realm = filter_input(INPUT_POST, 'realm');
+    $postava = ucfirst(strtolower(str_replace(" ", "", filter_input(INPUT_POST, 'postava'))));
+    if (isset(filter_input(INPUT_POST, 'CRON'))) {
         $cron = "1";
     } else {
         $cron = null;
@@ -38,50 +39,50 @@ if (!empty($realm) && !empty($postava)) {
             $showpictR = $showservR = $showguildR = $showachR = $showhkR = $showlvlR = $showtalentR = 'N';
             $stat1 = $stat2 = $stat3 = $stat4 = $stat5 = $stat6 = $stat7 = $stat8 = $stat9 = 'N';
 
-            if (isset($_POST['armory_show'])) {
-                $armory_show = $_POST['armory_show'];
+            if (isset(filter_input(INPUT_POST, 'armory_show'))) {
+                $armory_show = filter_input(INPUT_POST, 'armory_show');
                 $showpictR = TRUE;
             } else {
                 $armory_show = null;
             }
-            if (isset($_POST['server_show'])) {
-                $server_show = $_POST['server_show'];
+            if (isset(filter_input(INPUT_POST, 'server_show'))) {
+                $server_show = filter_input(INPUT_POST, 'server_show');
                 $showservR = TRUE;
             } else {
                 $server_show = null;
             }
-            if (isset($_POST['guilda_show'])) {
+            if (isset(filter_input(INPUT_POST, 'guilda_show'))) {
                 $guildName = $xml->characterInfo->character['guildName'];
-                $guilda_show = $_POST['guilda_show'];
+                $guilda_show = filter_input(INPUT_POST, 'guilda_show');
                 $showguildR = TRUE;
             } else {
                 $guildName = $guilda_show = null;
             }
-            if (isset($_POST['achievy_show'])) {
+            if (isset(filter_input(INPUT_POST, 'achievy_show'))) {
                 $achievpoints = $xml->characterInfo->character['points'];
                 $achievearned = $xml2->achievements->summary->c['earned'];
                 $achievtotal = $xml2->achievements->summary->c['total'];
-                $achievy_show = $_POST['achievy_show'];
+                $achievy_show = filter_input(INPUT_POST, 'achievy_show');
                 $showachR = TRUE;
             } else {
                 $achievpoints = $achievearned = $achievtotal = $achievy_show = null;
             }
-            if (isset($_POST['hk_show'])) {
+            if (isset(filter_input(INPUT_POST, 'hk_show'))) {
                 $honorkills = $xml->characterInfo->character['kills'];
-                $hk_show = $_POST['hk_show'];
+                $hk_show = filter_input(INPUT_POST, 'hk_show');
                 $showhkR = TRUE;
             } else {
                 $honorkills = $hk_show = null;
             }
-            if (isset($_POST['level_show'])) {
+            if (isset(filter_input(INPUT_POST, 'level_show'))) {
                 $char_level = $xml->characterInfo->character['level'];
-                $level_show = $_POST['level_show'];
+                $level_show = filter_input(INPUT_POST, 'level_show');
                 $showlvlR = TRUE;
             } else {
                 $char_level = $level_show = null;
             }
 
-            if (isset($_POST['spec_show'])) {
+            if (isset(filter_input(INPUT_POST, 'spec_show'))) {
                 foreach ($xml->characterInfo->characterTab->talentSpecs->talentSpec as $talentSpec) {
                     if ($talentSpec['active'] == "1") /* active spec */
                         $activeSpec = $talentSpec['prim'];
@@ -91,31 +92,31 @@ if (!empty($realm) && !empty($postava)) {
                         $talenty2 = $talentSpec['prim'];
                     }
                 }
-                $spec_show = $_POST['spec_show'];
+                $spec_show = filter_input(INPUT_POST, 'spec_show');
                 $showtalentR = TRUE;
             } else {
                 $talenty1 = $talenty2 = $spec_show = null;
             }
 
             /* ------------------------------------------ */
-            if (isset($_POST['hp_show'])) {
+            if (isset(filter_input(INPUT_POST, 'hp_show'))) {
                 $hp = $xml->characterInfo->characterTab->characterBars->health['effective'];
-                $hp_show = $_POST['hp_show'];
+                $hp_show = filter_input(INPUT_POST, 'hp_show');
                 $for_javascript++;
                 $stat1 = TRUE;
             } else {
                 $hp = $hp_show = null;
             }
 
-            if (isset($_POST['mana_show'])) {
+            if (isset(filter_input(INPUT_POST, 'mana_show'))) {
                 $mana = $xml->characterInfo->characterTab->characterBars->secondBar['effective'];
-                $mana_show = $_POST['mana_show'];
+                $mana_show = filter_input(INPUT_POST, 'mana_show');
                 $for_javascript++;
                 $stat2 = TRUE;
             } else {
                 $mana = $mana_show = null;
             }
-            if (isset($_POST['sph_show'])) {
+            if (isset(filter_input(INPUT_POST, 'sph_show'))) {
                 $holy = $xml->characterInfo->characterTab->spell->bonusDamage->holy['value'];
                 $fire = $xml->characterInfo->characterTab->spell->bonusDamage->fire['value'];
                 $nature = $xml->characterInfo->characterTab->spell->bonusDamage->nature['value'];
@@ -124,22 +125,22 @@ if (!empty($realm) && !empty($postava)) {
                 $arcane = $xml->characterInfo->characterTab->spell->bonusDamage->arcane['value'];
                 $sp = min($holy, $fire, $nature, $frost, $shadow, $arcane);
                 $heal = $xml->characterInfo->characterTab->spell->bonusHealing['value'];
-                $sph_show = $_POST['sph_show'];
+                $sph_show = filter_input(INPUT_POST, 'sph_show');
                 $for_javascript++;
                 $stat3 = TRUE;
             } else {
                 $sp = $heal = $sph_show = null;
             }
-            if (isset($_POST['ap_show'])) {
+            if (isset(filter_input(INPUT_POST, 'ap_show'))) {
                 $ap = $xml->characterInfo->characterTab->melee->power['effective'];
                 $rap = $xml->characterInfo->characterTab->ranged->power['effective'];
-                $ap_show = $_POST['ap_show'];
+                $ap_show = filter_input(INPUT_POST, 'ap_show');
                 $for_javascript++;
                 $stat4 = TRUE;
             } else {
                 $ap = $rap = $ap_show = null;
             }
-            if (isset($_POST['mrsc_show'])) {
+            if (isset(filter_input(INPUT_POST, 'mrsc_show'))) {
                 $nature = (float) $xml->characterInfo->characterTab->spell->critChance->nature['percent'];
                 $holy = (float) $xml->characterInfo->characterTab->spell->critChance->holy['percent'];
                 $shadow = (float) $xml->characterInfo->characterTab->spell->critChance->shadow['percent'];
@@ -149,39 +150,39 @@ if (!empty($realm) && !empty($postava)) {
                 $sc = number_format(($nature + $holy + $shadow + $arcane + $frost + $fire) / 6, 2);
                 $mc = number_format((float) $xml->characterInfo->characterTab->melee->critChance['percent'], 2);
                 $rc = number_format((float) $xml->characterInfo->characterTab->ranged->critChance['percent'], 2);
-                $mrsc_show = $_POST['mrsc_show'];
+                $mrsc_show = filter_input(INPUT_POST, 'mrsc_show');
                 $for_javascript++;
                 $stat5 = TRUE;
             } else {
                 $mrsc_show = $mc = $rc = $sc = null;
             }
-            if (isset($_POST['dodge_show'])) {
+            if (isset(filter_input(INPUT_POST, 'dodge_show'))) {
                 $dodge = number_format((float) $xml->characterInfo->characterTab->defenses->dodge['percent'], 2);
-                $dodge_show = $_POST['dodge_show'];
+                $dodge_show = filter_input(INPUT_POST, 'dodge_show');
                 $for_javascript++;
                 $stat6 = TRUE;
             } else {
                 $dodge = $dodge_show = null;
             }
-            if (isset($_POST['parry_show'])) {
+            if (isset(filter_input(INPUT_POST, 'parry_show'))) {
                 $parry = number_format((float) $xml->characterInfo->characterTab->defenses->parry['percent'], 2);
-                $parry_show = $_POST['parry_show'];
+                $parry_show = filter_input(INPUT_POST, 'parry_show');
                 $for_javascript++;
                 $stat7 = TRUE;
             } else {
                 $parry = $parry_show = null;
             }
-            if (isset($_POST['block_show'])) {
+            if (isset(filter_input(INPUT_POST, 'block_show'))) {
                 $block = number_format((float) $xml->characterInfo->characterTab->defenses->block['percent'], 2);
-                $block_show = $_POST['block_show'];
+                $block_show = filter_input(INPUT_POST, 'block_show');
                 $for_javascript++;
                 $stat8 = TRUE;
             } else {
                 $block = $block_show = null;
             }
-            if (isset($_POST['haste_show'])) {
+            if (isset(filter_input(INPUT_POST, 'haste_show'))) {
                 $haste = $xml->characterInfo->characterTab->spell->hasteRating['hasteRating'];
-                $haste_show = $_POST['haste_show'];
+                $haste_show = filter_input(INPUT_POST, 'haste_show');
                 $for_javascript++;
                 $stat9 = TRUE;
             } else {
@@ -252,25 +253,25 @@ if (!empty($realm) && !empty($postava)) {
     if ($cron == null) {
         print "<div id='obrazok'>\n";
         if (!empty($char_name) && !empty($realm)) {
-            print "<div id='vysledok'><img src='$odkaz' alt='signature'/>\n";
-            print "<br/>\n<br/>\n";
-            print "<table>\n";
-            print "<tr>\n";
-            print "<td>Forum link: </td>\n";
-            print "<td>Direct link: \n</td>\n";
-            print "</tr>\n";
-            print "<tr>\n";
-            print "<td><textarea id='forum' cols='40' rows='3' readonly='readonly' onClick=\"SelectAll('forum');\">\n";
-            print "[url=$link][img]$aktualneUmiestnenie/signatures/$char_name" . "_" . "$realm.png" . "[/img][/url]";
-            print "\rGenerated by [url=$aktualneUmiestnenie]Revenge[/url]\n";
-            print "</textarea>\n</td>\n";
-            print "<td>\n";
-            print "<textarea id='direct' cols='40' rows='3' readonly='readonly' onClick=\"SelectAll('direct');\">\n";
-            print "$aktualneUmiestnenie/signatures/$char_name" . "_" . "$realm.png\n";
-            print "</textarea>\n</td>\n";
-            print "</tr>\n";
-            print "</table>\n</div>\n";
-            print "<script type=\"text/javascript\">var count = " . $for_javascript . ";</script>";
+            print "<div id='vysledok'><img src='$odkaz' alt='signature'/>\n" .
+             "<br/>\n<br/>\n" .
+             "<table>\n" .
+             "<tr>\n" .
+             "<td>Forum link: </td>\n" .
+             "<td>Direct link: \n</td>\n" .
+             "</tr>\n" .
+             "<tr>\n" .
+             "<td><textarea id='forum' cols='40' rows='3' readonly='readonly' onClick=\"SelectAll('forum');\">\n" .
+             "[url=$link][img]$aktualneUmiestnenie/signatures/$char_name" . "_" . "$realm.png" . "[/img][/url]" .
+             "\rGenerated by [url=$aktualneUmiestnenie]Revenge[/url]\n" .
+             "</textarea>\n</td>\n" .
+             "<td>\n" .
+             "<textarea id='direct' cols='40' rows='3' readonly='readonly' onClick=\"SelectAll('direct');\">\n" .
+             "$aktualneUmiestnenie/signatures/$char_name" . "_" . "$realm.png\n" .
+             "</textarea>\n</td>\n" .
+             "</tr>\n" .
+             "</table>\n</div>\n" .
+             "<script type=\"text/javascript\">var count = " . $for_javascript . ";</script>";
         }
     } else {
         print "<img src='$odkaz' alt='signature'/>\n";

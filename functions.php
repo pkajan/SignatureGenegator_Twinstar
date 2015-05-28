@@ -52,10 +52,8 @@ function apostropheStupido($string) {
 
 function getCharName() {
     if (filter_input(INPUT_POST, 'postava')) {
-        //echo filter_input(INPUT_POST, 'postava');
         return filter_input(INPUT_POST, 'postava');
     } else {
-        //echo 'Character name';
         return 'Character name';
     }
 }
@@ -63,18 +61,18 @@ function getCharName() {
 function SelectRealm($realm_name) {
     if (filter_input(INPUT_POST, 'realm')) {
         if (filter_input(INPUT_POST, 'realm') == $realm_name) {
-            echo "selected=\"selected\"";
+            return "selected=\"selected\"";
         }
     } else {
-        echo '';
+        return '';
     }
 }
 
 function chcecked($name) {
     if (filter_input(INPUT_POST, $name)) {
-        echo " checked=\"checked\"";
+        return " checked=\"checked\"";
     } else {
-        echo '';
+        return '';
     }
 }
 
@@ -91,30 +89,25 @@ function farbaGuildy($r, $g, $b, $IMAGE) {
 function strPixels($string) {
     $strPixelWidths = array(
         //uni
-        '[' => 3, '\\' => 3, ']' => 3, '^' => 5, '_' => 7, '`' => 4, ':' => 3,
-        ';' => 3, '<' => 7, '=' => 7, ' ' => 3, '!' => 3, '\"' => 4, '#' => 7,
-        '$' => 7, '%' => 11, '&' => 8, "'" => 2, '(' => 4, ')' => 4, '*' => 5,
-        '+' => 7, ',' => 3, '-' => 4, '.' => 3, '/' => 3, '>' => 7, '?' => 7,
-        '@' => 12, '{' => 4, '|' => 3, '}' => 4, '~' => 7,
+        '[' => 3, '\\' => 3, ']' => 3, '^' => 5, '_' => 7, '`' => 4, ':' => 3, ';' => 3, '<' => 7, '=' => 7, ' ' => 3,
+        '!' => 3, '\"' => 4, '#' => 7, '$' => 7, '%' => 11, '&' => 8, "'" => 2, '(' => 4, ')' => 4, '*' => 5, '+' => 7,
+        ',' => 3, '-' => 4, '.' => 3, '/' => 3, '>' => 7, '?' => 7, '@' => 12, '{' => 4, '|' => 3, '}' => 4, '~' => 7,
         //number
-        '0' => 7, '1' => 7, '2' => 7, '3' => 7, '4' => 7, '5' => 7, '6' => 7,
-        '7' => 7, '8' => 7, '9' => 7,
+        '0' => 7, '1' => 7, '2' => 7, '3' => 7, '4' => 7, '5' => 7, '6' => 7, '7' => 7, '8' => 7, '9' => 7,
         //capital
-        'A' => 7, 'B' => 8, 'C' => 9, 'D' => 9, 'E' => 8, 'F' => 7, 'G' => 9,
-        'H' => 7, 'I' => 3, 'J' => 6, 'K' => 8, 'L' => 7, 'M' => 9, 'N' => 9,
-        'O' => 9, 'P' => 8, 'Q' => 9, 'R' => 7, 'S' => 8, 'T' => 7, 'U' => 9,
-        'V' => 7, 'W' => 11, 'X' => 7, 'Y' => 7, 'Z' => 7,
+        'A' => 7, 'B' => 8, 'C' => 9, 'D' => 9, 'E' => 8, 'F' => 7, 'G' => 9, 'H' => 7, 'I' => 3, 'J' => 6, 'K' => 8,
+        'L' => 7, 'M' => 9, 'N' => 9, 'O' => 9, 'P' => 8, 'Q' => 9, 'R' => 7, 'S' => 8, 'T' => 7, 'U' => 9, 'V' => 7,
+        'W' => 11, 'X' => 7, 'Y' => 7, 'Z' => 7,
         //small
-        'a' => 6, 'b' => 7, 'c' => 6, 'd' => 7, 'e' => 6, 'f' => 3, 'g' => 7,
-        'h' => 7, 'i' => 3, 'j' => 3, 'k' => 6, 'l' => 3, 'm' => 7, 'n' => 5,
-        'o' => 7, 'p' => 7, 'q' => 7, 'r' => 4, 's' => 7, 't' => 3, 'u' => 7,
-        'v' => 5, 'w' => 7, 'x' => 5, 'y' => 5, 'z' => 5);
+        'a' => 6, 'b' => 7, 'c' => 6, 'd' => 7, 'e' => 6, 'f' => 3, 'g' => 7, 'h' => 7, 'i' => 3, 'j' => 3, 'k' => 6,
+        'l' => 3, 'm' => 7, 'n' => 5, 'o' => 7, 'p' => 7, 'q' => 7, 'r' => 4, 's' => 7, 't' => 3, 'u' => 7, 'v' => 5,
+        'w' => 7, 'x' => 5, 'y' => 5, 'z' => 5);
     $weight = 0;
     if (!empty($string)) {
         for ($i = 0; $i < strlen($string); $i++) {
-            $w = $strPixelWidths[substr($string, $i, 1)];
-            if ($w) {
-                $weight += $w;
+            //$w = $strPixelWidths[substr($string, $i, 1)];
+            if ($strPixelWidths[substr($string, $i, 1)]) {
+                $weight += $strPixelWidths[substr($string, $i, 1)];
             }
         }
     }
