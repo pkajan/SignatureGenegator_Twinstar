@@ -25,7 +25,7 @@
         <div id="zadavanie">
             <form action="index.php" method="post" enctype="multipart/form-data" name="form">
                 <div id="zada">
-                    <input id="textove_pole" type="text" name="postava" value="<?php getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
+                    <input id="textove_pole" type="text" name="postava" value="<?= getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
                                 this.value = '';" required />
                     <select id="realm" name="realm">
                         <option value="Hyperion" <?php SelectRealm("Hyperion"); ?>>Hyperion</option>

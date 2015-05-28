@@ -46,15 +46,17 @@ function repeat($postava, $realm, $showpictR, $showservR, $showguildR, $showachR
 }
 
 function apostropheStupido($string) {
-    $string = str_replace("'", "&#39;", $string);
-    return $string;
+    $newstring = str_replace("'", "&#39;", $string);
+    return $newstring;
 }
 
 function getCharName() {
     if (filter_input(INPUT_POST, 'postava')) {
-        echo filter_input(INPUT_POST, 'postava');
+        //echo filter_input(INPUT_POST, 'postava');
+        return filter_input(INPUT_POST, 'postava');
     } else {
-        echo 'Character name';
+        //echo 'Character name';
+        return 'Character name';
     }
 }
 
