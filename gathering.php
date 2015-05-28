@@ -270,9 +270,6 @@ if (!empty($realm) && !empty($postava)) {
             print "</textarea>\n</td>\n";
             print "</tr>\n";
             print "</table>\n</div>\n";
-            print "<div id='myProfile' style='visibility: hidden;'>\n<!-- Sorry man, but i need more visitors...I'm a visitor Whore :D -->\n";
-            print "<iframe src='http://forum.twinstar.cz/member.php/10520-sknitro'>too sad you dont allow iframe...</iframe>\n";
-            print "</div>\n";
             print "<script type=\"text/javascript\">var count = " . $for_javascript . ";</script>";
         }
     } else {
