@@ -1,80 +1,80 @@
 body {
-	padding-top: 1%;
-	text-align: center;
-	background-color: #0F0F0F;
-	width: 95%;
-	margin-left: auto;
-	margin-right: auto;
-	color: #FFFFFF;
+    padding-top: 1%;
+    text-align: center;
+    background-color: #0F0F0F;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
 }
 #obrazok {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 #country {
-	float: left;
+    float: left;
 }
 #changelog {
-	position: absolute;
-	bottom: 35px;
-	left: 75%;
-	text-align: left;
-	font-size: 12px;
-	height: 110px;
-	overflow: auto;
+    position: absolute;
+    bottom: 35px;
+    left: 75%;
+    text-align: left;
+    font-size: 12px;
+    height: 110px;
+    overflow: auto;
 }
 #changelog_button {
-	position: absolute;
-	bottom: 0;
-	left: 75%;
-	text-align: left;
-	font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 75%;
+    text-align: left;
+    font-size: 12px;
 }
 #temp {
-	color: red;
-	font-size: 15px;
+    color: red;
+    font-size: 15px;
 }
 #zada {
-	padding-top: 1%;
+    padding-top: 1%;
 }
 #hlavicka {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 20px;
-	font-weight: 900;
-	font-variant: small-caps;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 900;
+    font-variant: small-caps;
 }
 a, a:hover, a:visited {
-	color: #FFFFFF;
-	text-decoration: none;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 #textove_pole {
-	width: 150px;
+    width: 150px;
 }
 #potvrdenie {
-	text-align: center;
+    text-align: center;
 }
 #neexistuje {
-	color: #CC0000;
+    color: #CC0000;
 }
 table {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 .reklama {
-	position: absolute;
-	color: #CCCCCC;
-	font-size: 10px;
-	bottom: 0;
-	right: 80%;
-	text-align: left;
+    position: absolute;
+    color: #CCCCCC;
+    font-size: 10px;
+    bottom: 0;
+    right: 80%;
+    text-align: left;
 }
 textarea {
-	overflow: auto;
-	width: 250px;
+    overflow: auto;
+    width: 250px;
 }
 h3 {
-	font-size: 14px;
+    font-size: 14px;
 }
 table tr td {
-	vertical-align: top;
+    vertical-align: top;
 }

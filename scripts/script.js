@@ -5,7 +5,7 @@ function SelectAll(id) {
 }
 
 /* automaticaly select textbox for writing nicknames */
-window.onload = function() {
+window.onload = function () {
     document.getElementById("textove_pole").focus();
 };
 
@@ -15,7 +15,7 @@ var MAX = 4;
 function countCheckedBoxes(elem) {
     if (elem.checked) {
         if (count <= MAX) {
-            count = count + 1;
+            count += 1;
             if (count > MAX) {
                 count = MAX;
                 elem.checked = false;
@@ -39,4 +39,18 @@ function hideButton() {
     document.getElementById('spoiler_text').style.display = 'none';
     document.getElementById('show_id').style.display = '';
 
+}
+/* checkbox color */
+function Color() {
+    var i = 1;
+    var pocetPoloziek = 16;
+    var span = 'span';
+    for (i; i < pocetPoloziek + 1; i++) {
+        var text = span + i;
+        if (document.getElementById(i).checked) {
+            document.getElementById(text).style.color = 'red';
+        } else {
+            document.getElementById(text).style.color = 'white';
+        }
+    }
 }

@@ -1,5 +1,20 @@
 <?php
 
+function curPageURL() {
+    $pageURL = 'http';
+
+    if (filter_input(INPUT_SERVER, "HTTPS") == "on") {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+    if (filter_input(INPUT_SERVER, "SERVER_PORT") != "80") {
+        $pageURL .= filter_input(INPUT_SERVER, "SERVER_NAME") . ":" . filter_input(INPUT_SERVER, "SERVER_PORT") . filter_input(INPUT_SERVER, "REQUEST_URI");
+    } else {
+        $pageURL .= filter_input(INPUT_SERVER, "SERVER_NAME") . filter_input(INPUT_SERVER, "REQUEST_URI");
+    }
+    return str_replace("/index.php", "", $pageURL);
+}
+
 function pull_xml($url) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -68,7 +83,7 @@ function SelectRealm($realm_name) {
     }
 }
 
-function chcecked($name) {
+function checked($name) {
     if (filter_input(INPUT_POST, $name)) {
         return " checked=\"checked\"";
     } else {

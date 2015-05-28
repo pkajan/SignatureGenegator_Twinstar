@@ -9,6 +9,7 @@ if (filter_input(INPUT_GET, 'honork',       FILTER_VALIDATE_INT)) {	$honork     
 if (filter_input(INPUT_GET, 'genderid',     FILTER_VALIDATE_INT)) {	$genderId     = filter_input(INPUT_GET, 'genderid',     FILTER_VALIDATE_INT);	} else { 	$genderId = 0;}
 if (filter_input(INPUT_GET, 'raceid',       FILTER_VALIDATE_INT)) {	$raceId       = filter_input(INPUT_GET, 'raceid',       FILTER_VALIDATE_INT);	} else { 	$raceId = 0;}
 if (filter_input(INPUT_GET, 'classid',      FILTER_VALIDATE_INT)) {	$classId      = filter_input(INPUT_GET, 'classid',      FILTER_VALIDATE_INT);	} else { 	$classId = 0;}
+if (filter_input(INPUT_GET, 'activeSpec',   FILTER_VALIDATE_INT)) {	$activeSpec   = filter_input(INPUT_GET, 'activeSpec',   FILTER_VALIDATE_INT);	} else { 	$activeSpec = 0;}
 if (filter_input(INPUT_GET, 'armory_show',  FILTER_VALIDATE_INT)) {	$armory_show  = filter_input(INPUT_GET, 'armory_show',  FILTER_VALIDATE_INT);	} else { 	$armory_show = 0;}
 if (filter_input(INPUT_GET, 'server_show',  FILTER_VALIDATE_INT)) {	$server_show  = filter_input(INPUT_GET, 'server_show',  FILTER_VALIDATE_INT);	} else { 	$server_show = 0;}
 if (filter_input(INPUT_GET, 'guilda_show',  FILTER_VALIDATE_INT)) {	$guilda_show  = filter_input(INPUT_GET, 'guilda_show',  FILTER_VALIDATE_INT);	} else { 	$guilda_show = 0;}
@@ -17,7 +18,6 @@ if (filter_input(INPUT_GET, 'armory_show',  FILTER_VALIDATE_INT)) {	$armory_show
 if (filter_input(INPUT_GET, 'hk_show',      FILTER_VALIDATE_INT)) {	$hk_show      = filter_input(INPUT_GET, 'hk_show',      FILTER_VALIDATE_INT);	} else { 	$hk_show = 0;}
 if (filter_input(INPUT_GET, 'level_show',   FILTER_VALIDATE_INT)) {	$level_show   = filter_input(INPUT_GET, 'level_show',   FILTER_VALIDATE_INT);	} else { 	$level_show = 0;}
 if (filter_input(INPUT_GET, 'spec_show',    FILTER_VALIDATE_INT)) {	$spec_show    = filter_input(INPUT_GET, 'spec_show',    FILTER_VALIDATE_INT);	} else { 	$spec_show = 0;}
-if (filter_input(INPUT_GET, 'activeSpec',   FILTER_VALIDATE_INT)) {	$activeSpec   = filter_input(INPUT_GET, 'activeSpec',   FILTER_VALIDATE_INT);	} else { 	$activeSpec = 0;}
 if (filter_input(INPUT_GET, 'hp_show',      FILTER_VALIDATE_INT)) {	$hp_show      = filter_input(INPUT_GET, 'hp_show',      FILTER_VALIDATE_INT);	} else { 	$hp_show = 0;}
 if (filter_input(INPUT_GET, 'mana_show',    FILTER_VALIDATE_INT)) {	$mana_show    = filter_input(INPUT_GET, 'mana_show',    FILTER_VALIDATE_INT);	} else { 	$mana_show = 0;}
 if (filter_input(INPUT_GET, 'sph_show',     FILTER_VALIDATE_INT)) {	$sph_show     = filter_input(INPUT_GET, 'sph_show',     FILTER_VALIDATE_INT);	} else { 	$sph_show = 0;}
@@ -33,13 +33,13 @@ if (filter_input(INPUT_GET, 'sp',           FILTER_VALIDATE_INT)) {	$sp         
 if (filter_input(INPUT_GET, 'heal',         FILTER_VALIDATE_INT)) {	$heal         = filter_input(INPUT_GET, 'heal',         FILTER_VALIDATE_INT);	} else { 	$heal = 0;}
 if (filter_input(INPUT_GET, 'ap',           FILTER_VALIDATE_INT)) {	$ap           = filter_input(INPUT_GET, 'ap',           FILTER_VALIDATE_INT);	} else { 	$ap = 0;}
 if (filter_input(INPUT_GET, 'rap',          FILTER_VALIDATE_INT)) {	$rap          = filter_input(INPUT_GET, 'rap',          FILTER_VALIDATE_INT);	} else { 	$rap = 0;}
-if (filter_input(INPUT_GET, 'mc',           FILTER_VALIDATE_INT)) {	$mc           = filter_input(INPUT_GET, 'mc',           FILTER_VALIDATE_INT);	} else { 	$mc = 0;}
-if (filter_input(INPUT_GET, 'sc',           FILTER_VALIDATE_INT)) {	$sc           = filter_input(INPUT_GET, 'sc',           FILTER_VALIDATE_INT);	} else { 	$sc = 0;}
-if (filter_input(INPUT_GET, 'rc',           FILTER_VALIDATE_INT)) {	$rc           = filter_input(INPUT_GET, 'rc',           FILTER_VALIDATE_INT);	} else { 	$rc = 0;}
-if (filter_input(INPUT_GET, 'dodge',        FILTER_VALIDATE_INT)) {	$dodge        = filter_input(INPUT_GET, 'dodge',        FILTER_VALIDATE_INT);	} else { 	$dodge = 0;}
-if (filter_input(INPUT_GET, 'parry',        FILTER_VALIDATE_INT)) {	$parry        = filter_input(INPUT_GET, 'parry',        FILTER_VALIDATE_INT);	} else { 	$parry = 0;}
-if (filter_input(INPUT_GET, 'block',        FILTER_VALIDATE_INT)) {	$block        = filter_input(INPUT_GET, 'block',        FILTER_VALIDATE_INT);	} else { 	$block = 0;}
-if (filter_input(INPUT_GET, 'haste',        FILTER_VALIDATE_INT)) {	$haste        = filter_input(INPUT_GET, 'haste',        FILTER_VALIDATE_INT);	} else { 	$haste = 0;}
+if (filter_input(INPUT_GET, 'mc',           FILTER_VALIDATE_FLOAT)) {	$mc           = filter_input(INPUT_GET, 'mc',           FILTER_VALIDATE_FLOAT);	} else { 	$mc = 0;}
+if (filter_input(INPUT_GET, 'sc',           FILTER_VALIDATE_FLOAT)) {	$sc           = filter_input(INPUT_GET, 'sc',           FILTER_VALIDATE_FLOAT);	} else { 	$sc = 0;}
+if (filter_input(INPUT_GET, 'rc',           FILTER_VALIDATE_FLOAT)) {	$rc           = filter_input(INPUT_GET, 'rc',           FILTER_VALIDATE_FLOAT);	} else { 	$rc = 0;}
+if (filter_input(INPUT_GET, 'dodge',        FILTER_VALIDATE_FLOAT)) {	$dodge        = filter_input(INPUT_GET, 'dodge',        FILTER_VALIDATE_FLOAT);	} else { 	$dodge = 0;}
+if (filter_input(INPUT_GET, 'parry',        FILTER_VALIDATE_FLOAT)) {	$parry        = filter_input(INPUT_GET, 'parry',        FILTER_VALIDATE_FLOAT);	} else { 	$parry = 0;}
+if (filter_input(INPUT_GET, 'block',        FILTER_VALIDATE_FLOAT)) {	$block        = filter_input(INPUT_GET, 'block',        FILTER_VALIDATE_FLOAT);	} else { 	$block = 0;}
+if (filter_input(INPUT_GET, 'haste',        FILTER_VALIDATE_FLOAT)) {	$haste        = filter_input(INPUT_GET, 'haste',        FILTER_VALIDATE_FLOAT);	} else { 	$haste = 0;}
 
 
 if (sizeof(filter_input(INPUT_GET, 'prefix',    FILTER_SANITIZE_STRING)) != 0) { $prefix    = filter_input(INPUT_GET, 'prefix',     FILTER_SANITIZE_STRING);}
