@@ -59,7 +59,7 @@ function getCharName() {
 }
 
 function SelectRealm($realm_name) {
-    if (filter_input(INPUT_POST, 'realm')) {
+    if ((filter_input(INPUT_POST, 'realm'))) {
         if (filter_input(INPUT_POST, 'realm') == $realm_name) {
             return "selected=\"selected\"";
         }

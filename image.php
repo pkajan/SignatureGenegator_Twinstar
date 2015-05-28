@@ -2,162 +2,22 @@
 
 include_once 'functions.php';
 
-if (!isset(filter_input(INPUT_GET, 'cron'))) {
+if (!(filter_input(INPUT_GET, 'cron'))) {
 //header('Content-Disposition: attachment; filename="signature_generated_by_Revenge.png"');
 }
 $image = imagecreatetruecolor(450, 80);
 
 $TBC = FALSE;
 
-if (isset(filter_input(INPUT_GET, 'realm'))) {
+if ((filter_input(INPUT_GET, 'realm'))) {
     $realm = filter_input(INPUT_GET, 'realm');
     if ($realm == "Ares") {
         $TBC = TRUE;
     }
 }
 
-if (isset(filter_input(INPUT_GET, 'name'))) {
-    $name = filter_input(INPUT_GET, 'name');
-}
+include 'dataminer.php';
 
-if (isset(filter_input(INPUT_GET, 'level'))) {
-    $level = filter_input(INPUT_GET, 'level');
-}
-
-if (isset(filter_input(INPUT_GET, 'frakcia'))) {
-    $frakcia = filter_input(INPUT_GET, 'frakcia');
-}
-
-if (isset(filter_input(INPUT_GET, 'class'))) {
-    $class = filter_input(INPUT_GET, 'class');
-}
-if (isset(filter_input(INPUT_GET, 'talents1'))) {
-    $talents1 = ucwords(filter_input(INPUT_GET, 'talents1'));
-}
-if (isset(filter_input(INPUT_GET, 'talents2'))) {
-    $talents2 = ucwords(filter_input(INPUT_GET, 'talents2'));
-}
-if (isset(filter_input(INPUT_GET, 'achievy'))) {
-    $achievy = filter_input(INPUT_GET, 'achievy');
-}
-if (isset(filter_input(INPUT_GET, 'achievyearn'))) {
-    $achievyearn = filter_input(INPUT_GET, 'achievyearn');
-}
-if (isset(filter_input(INPUT_GET, 'achievytotal'))) {
-    $achievytotal = filter_input(INPUT_GET, 'achievytotal');
-}
-if (isset(filter_input(INPUT_GET, 'prefix'))) {
-    $prefix = filter_input(INPUT_GET, 'prefix');
-}
-if (isset(filter_input(INPUT_GET, 'suffix'))) {
-    $suffix = filter_input(INPUT_GET, 'suffix');
-}
-if (isset(filter_input(INPUT_GET, 'guilda'))) {
-    $guilda = filter_input(INPUT_GET, 'guilda');
-}
-if (isset(filter_input(INPUT_GET, 'honork'))) {
-    $honork = filter_input(INPUT_GET, 'honork');
-}
-if (isset(filter_input(INPUT_GET, 'genderid'))) {
-    $genderId = filter_input(INPUT_GET, 'genderid');
-}
-if (isset(filter_input(INPUT_GET, 'raceid'))) {
-    $raceId = filter_input(INPUT_GET, 'raceid');
-}
-if (isset(filter_input(INPUT_GET, 'classid'))) {
-    $classId = filter_input(INPUT_GET, 'classid');
-}
-if (isset(filter_input(INPUT_GET, 'armory_show'))) {
-    $armory_show = filter_input(INPUT_GET, 'armory_show');
-}
-if (isset(filter_input(INPUT_GET, 'server_show'))) {
-    $server_show = filter_input(INPUT_GET, 'server_show');
-}
-if (isset(filter_input(INPUT_GET, 'guilda_show'))) {
-    $guilda_show = filter_input(INPUT_GET, 'guilda_show');
-}
-if (isset(filter_input(INPUT_GET, 'achievy_show'))) {
-    $achievy_show = filter_input(INPUT_GET, 'achievy_show');
-}
-if (isset(filter_input(INPUT_GET, 'hk_show'))) {
-    $hk_show = filter_input(INPUT_GET, 'hk_show');
-}
-if (isset(filter_input(INPUT_GET, 'level_show'))) {
-    $level_show = filter_input(INPUT_GET, 'level_show');
-}
-if (isset(filter_input(INPUT_GET, 'spec_show'))) {
-    $spec_show = filter_input(INPUT_GET, 'spec_show');
-}
-if (isset(filter_input(INPUT_GET, 'activeSpec'))) {
-    $activeSpec = filter_input(INPUT_GET, 'activeSpec');
-}
-if (isset(filter_input(INPUT_GET, 'hp_show'))) {
-    $hp_show = filter_input(INPUT_GET, 'hp_show');
-}
-if (isset(filter_input(INPUT_GET, 'mana_show'))) {
-    $mana_show = filter_input(INPUT_GET, 'mana_show');
-}
-if (isset(filter_input(INPUT_GET, 'sph_show'))) {
-    $sph_show = filter_input(INPUT_GET, 'sph_show');
-}
-if (isset(filter_input(INPUT_GET, 'ap_show'))) {
-    $ap_show = filter_input(INPUT_GET, 'ap_show');
-}
-if (isset(filter_input(INPUT_GET, 'mrsc_show'))) {
-    $mrsc_show = filter_input(INPUT_GET, 'mrsc_show');
-}
-if (isset(filter_input(INPUT_GET, 'dodge_show'))) {
-    $dodge_show = filter_input(INPUT_GET, 'dodge_show');
-}
-if (isset(filter_input(INPUT_GET, 'parry_show'))) {
-    $parry_show = filter_input(INPUT_GET, 'parry_show');
-}
-if (isset(filter_input(INPUT_GET, 'block_show'))) {
-    $block_show = filter_input(INPUT_GET, 'block_show');
-}
-if (isset(filter_input(INPUT_GET, 'haste_show'))) {
-    $haste_show = filter_input(INPUT_GET, 'haste_show');
-}
-
-if (isset(filter_input(INPUT_GET, 'hp'))) {
-    $hp = filter_input(INPUT_GET, 'hp');
-}
-if (isset(filter_input(INPUT_GET, 'mana'))) {
-    $mana = filter_input(INPUT_GET, 'mana');
-}
-if (isset(filter_input(INPUT_GET, 'sp'))) {
-    $sp = filter_input(INPUT_GET, 'sp');
-}
-if (isset(filter_input(INPUT_GET, 'heal'))) {
-    $heal = filter_input(INPUT_GET, 'heal');
-}
-if (isset(filter_input(INPUT_GET, 'ap'))) {
-    $ap = filter_input(INPUT_GET, 'ap');
-}
-if (isset(filter_input(INPUT_GET, 'rap'))) {
-    $rap = filter_input(INPUT_GET, 'rap');
-}
-if (isset(filter_input(INPUT_GET, 'mc'))) {
-    $mc = filter_input(INPUT_GET, 'mc');
-}
-if (isset(filter_input(INPUT_GET, 'sc'))) {
-    $sc = filter_input(INPUT_GET, 'sc');
-}
-if (isset(filter_input(INPUT_GET, 'rc'))) {
-    $rc = filter_input(INPUT_GET, 'rc');
-}
-if (isset(filter_input(INPUT_GET, 'dodge'))) {
-    $dodge = filter_input(INPUT_GET, 'dodge');
-}
-if (isset(filter_input(INPUT_GET, 'parry'))) {
-    $parry = filter_input(INPUT_GET, 'parry');
-}
-if (isset(filter_input(INPUT_GET, 'block'))) {
-    $block = filter_input(INPUT_GET, 'block');
-}
-if (isset(filter_input(INPUT_GET, 'haste'))) {
-    $haste = filter_input(INPUT_GET, 'haste');
-}
 global $posunto;
 $black = imagecolorallocate($image, 0, 0, 0);
 $farbaAchievy = imagecolorallocate($image, 0, 153, 0);
@@ -308,7 +168,7 @@ switch ($frakcia) {
         $honorIcona = $obludyHonor;
         $honorIcon = imagecreatefromstring(file_get_contents($honorIcona));
         break;
-    default: $farbaGuildy = farbaGuildy(255, 255, 255);
+    default: $farbaGuildy = farbaGuildy(255, 255, 255, $image);
 }
 
 switch ($class) {
@@ -707,13 +567,13 @@ if ($TBC == FALSE) {
     imagecopymerge($image, $spec2, 60, 55, 0, 0, $rozmerXS2, $rozmerYS2, 100);
 }
 
-if (!isset(filter_input(INPUT_GET, 'cron'))) {
+/* SHOW and SAVE FILE */
+
+if (!(filter_input(INPUT_GET, 'cron'))) {
     header("Content-type: image/png");
     imagepng($image); //zobrazi v prehliadaci
 }
 
-/* SAVE FILE */
 imagepng($image, "signatures/" . $name . "_" . $realm . ".png"); //ulozi na local
 ImageDestroy($image);
-
-
+ 

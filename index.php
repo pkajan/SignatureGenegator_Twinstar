@@ -57,7 +57,9 @@
             </form>
         </div>
 
-<?php include("gathering.php"); ?>
+        
+        
+<?php include_once 'gathering.php'; ?>
 
         <div class="reklama">
             <!-- REKLAMA, nemusi byt validne -->
@@ -66,7 +68,7 @@
         </div>
         <div id="changelog">
             <table id="spoiler_text" style="display: none;">
-<?php include "changelog.html"; ?>
+<?php include_once 'changelog.html'; ?>
             </table>
         </div>
         <div id="changelog_button">
