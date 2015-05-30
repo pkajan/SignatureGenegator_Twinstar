@@ -28,8 +28,8 @@
                     <input id="textove_pole" type="text" name="postava" value="<?= getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
                                 this.value = '';" required />
                     <select id="realm" name="realm">
+                        <option value="Artemis" <?= SelectRealm("Artemis"); ?>>Artemis</option>
                         <option value="Hyperion" <?= SelectRealm("Hyperion"); ?>>Hyperion</option>
-                        <option value="Vesper" <?= SelectRealm("Vesper"); ?>>Vesper</option>
                         <option value="Ares" <?= SelectRealm("Ares"); ?>>Ares</option>
                     </select>
                     <input type="submit" name="submit" class="button" /><br /><br />

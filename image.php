@@ -2,23 +2,31 @@
 
 include_once 'functions.php';
 
-if (!(filter_input(INPUT_GET, 'cron'))) {
-//header('Content-Disposition: attachment; filename="signature_generated_by_Revenge.png"');
-}
+/*
+  if (!(filter_input(INPUT_GET, 'cron'))) {
+  header('Content-Disposition: attachment; filename="signature_generated_by_Revenge.png"');
+  }
+ */
 $image = imagecreatetruecolor(450, 80);
-
-$TBC = FALSE;
 
 if ((filter_input(INPUT_GET, 'realm'))) {
     $realm = filter_input(INPUT_GET, 'realm');
     if ($realm == "Ares") {
-        $TBC = TRUE;
+        $TBC = TRUE;    // tbc doesnt have achievements
+    } else {
+        $TBC = FALSE;
     }
 }
 
-include 'dataminer.php';
+include 'getparser_image.php';
 
+$DEBUGGING_ON = FALSE;
+//$DEBUGGING_ON = TRUE;
 global $posunto;
+$posunZhora = 26;
+$posunN = 20;
+$posun = 12;
+$posunto = $posunZhora + $posunN - 4;
 $black = imagecolorallocate($image, 0, 0, 0);
 $farbaAchievy = imagecolorallocate($image, 0, 153, 0);
 $farbaHK = imagecolorallocate($image, 204, 0, 0);
@@ -27,9 +35,6 @@ $font_size_default = 20;
 $font_size_lvl = 16;
 $font_size_text = 8;
 $space = 4;
-$posunZhora = 26;
-$posunN = 20;
-$posun = 12;
 $korekcia = 0;
 $korekciaH = 0;
 $showMaxStats = 4;
@@ -82,75 +87,23 @@ if (empty($hp_show)) {
 } else {
     $textHP = "HP " . $hp;
 }
-if (empty($mana_show)) {
-    $textMana = null;
-} else {
-    if ($class != "Death Knight" && $class != "Rogue" && $class != "Warrior") {
-        $textMana = "Mana " . $mana;
-    }
-}
-if (empty($sph_show)) {
-    $textSPH = null;
-} else {
-    if ($class != "Death Knight" && $class != "Rogue" && $class != "Warrior" && $class != "Hunter") {
-        if (($class == "Druid" && $activeSpec == "Restoration") ||
-                ($class == "Paladin" && $activeSpec == "Holy") ||
-                ($class == "Priest" && ($activeSpec == "Holy" || $activeSpec == "Discipline")) ||
-                ($class == "Shaman" && $activeSpec == "Restoration")) {
-            $textSPH = "Healing " . $heal;
-        } else {
-            $textSPH = "SP " . $sp;
-        }
-    }
-}
-if (empty($ap_show)) {
-    $textAP = null;
-} else {
-    if ($class != "Mage" && $class != "Priest" && $class != "Warlock") {
-        if ($class == "Hunter") {
-            $textAP = "AP " . $rap;
-        } else {
-            $textAP = "AP " . $ap;
-        }
-    }
-}
-if (empty($mrsc_show)) {
-    $textMRSC = null;
-} else {
-    if ($class == "Hunter") {
-        $textMRSC = "Crit " . $rc . "%";
-    } else {
-        if (($class == "Druid" && ($activeSpec == "Restoration" || $activeSpec == "Balance")) ||
-                $class == "Mage" ||
-                $class == "Paladin" && $activeSpec == "Holy" ||
-                $class == "Priest" ||
-                ($class == "Shaman" && ($activeSpec == "Restoration" || $activeSpec == "Elemental")) ||
-                $class == "Warlock") {
-            $textMRSC = "Crit " . $sc . "%";
-        } else {
-            $textMRSC = "Crit " . $mc . "%";
-        }
-    }
-}
+
+/* filter stats by class...
+ * warrior/rogue/DK doesnt have mana, so 100 is wrong answer
+ * dk/rogue/war/hunt doest have Sp/heal
+ * priest/warlock/mage with AP? looks weird
+ */
+include 'class_stat_filter.php';
+
+
+
 if (empty($dodge_show)) {
     $textDodge = null;
 } else {
     $textDodge = "Dodge " . $dodge . "%";
 }
-if (empty($parry_show)) {
-    $textParry = null;
-} else {
-    if ($class != "Mage" && $class != "Priest" && $class != "Warlock" && $class != "Druid") {
-        $textParry = "Parry " . $parry . "%";
-    }
-}
-if (empty($block_show)) {
-    $textBlock = null;
-} else {
-    if ($class != "Mage" && $class != "Priest" && $class != "Warlock" && $class != "Druid") {
-        $textBlock = "Block " . $block . "%";
-    }
-}
+
+
 if (empty($haste_show)) {
     $textHaste = null;
 } else {
@@ -430,12 +383,11 @@ if ($suffix != null) {
 if ($suffix == null && $prefix == null) {
     $zobrazeneMeno = "$name";
 }
-//imagettftext ($image, float $size , float $angle , int $x , int $y , 		 int $color , string $fontfile , string $text )
+//imagettftext ($image, float $size , float $angle , int $x , int $y , int $color , string $fontfile , string $text )
 imagettftext($image, $font_size, 0, 90, $posunZhora, $farbaNick, $fontNick, $zobrazeneMeno);
 
 
 /* GUILDA */
-$posunto = $posunZhora + $posunN - 4;
 if ($guilda == null) {
     imagettftext($image, $font_size_text, 0, 90, $posunto, $farbaGuildy, $font, $textRealm);
 } else {
@@ -533,7 +485,7 @@ $spec2 = imagecreatefromstring(file_get_contents($spec2));
 /* AVATAR z ARMORY */
 if ($armory_show == 1) {
     switch ($level) {
-        case ($level == 80):
+        case ($level <= 85):
             $avatar = "images/wow-80/" . $genderId . "-" . $raceId . "-" . $classId . ".gif";
             break;
         case ($level >= 70 && $level < 80):
@@ -568,12 +520,12 @@ if ($TBC == FALSE) {
 }
 
 /* SHOW and SAVE FILE */
+if (!$DEBUGGING_ON) {
+    if (!(filter_input(INPUT_GET, 'cron'))) {
+        header("Content-type: image/png");
+        imagepng($image); //zobrazi v prehliadaci
+    }
 
-if (!(filter_input(INPUT_GET, 'cron'))) {
-    header("Content-type: image/png");
-    imagepng($image); //zobrazi v prehliadaci
+    imagepng($image, "signatures/" . $name . "_" . $realm . ".png"); //ulozi na local
+    ImageDestroy($image);
 }
-
-imagepng($image, "signatures/" . $name . "_" . $realm . ".png"); //ulozi na local
-ImageDestroy($image);
- 
