@@ -1,11 +1,13 @@
-<?php include 'functions.php'; ?>
+<?php
+header("Content-Type: text/html; charset=utf-8");
+include 'functions.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="keywords" content="siganture generator wow" />
         <meta name="author" content="Peter Kajan alias Revenge" />
         <meta name="description" content="Signature generator" />
-        <meta charset="utf-8" />
         <title>TwinStar - Signature generator</title>
         <link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
         <script src="scripts/script.js"></script>
@@ -64,7 +66,7 @@
         <div class="reklama">
             <!-- REKLAMA, nemusi byt validne -->
             <endora>
-                <!-- REKLAMA, koniec -->
+            <!-- REKLAMA, koniec -->
         </div>
         <div id="changelog">
             <table id="spoiler_text" style="display: none;">
