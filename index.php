@@ -1,7 +1,4 @@
-<?php
-header("Content-Type: text/html; charset=utf-8");
-include 'functions.php';
-?>
+<?php include 'functions.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
