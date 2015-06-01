@@ -128,3 +128,11 @@ function strPixels($string) {
     }
     return $weight;
 }
+
+function returnNULL($str) {
+    if ($str == 'N') {
+        return null;
+    } else {
+        return $str;
+    }
+}

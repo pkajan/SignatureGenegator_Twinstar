@@ -2,26 +2,28 @@
 
 include_once 'functions.php';
 
-/*
-  if (!(filter_input(INPUT_GET, 'cron'))) {
-  header('Content-Disposition: attachment; filename="signature_generated_by_Revenge.png"');
-  }
- */
 $image = imagecreatetruecolor(450, 80);
 
-if ((filter_input(INPUT_GET, 'realm'))) {
-    $realm = filter_input(INPUT_GET, 'realm');
+
+if (filter_var($_GET['realm'])) {
+    $realm = filter_var($_GET['realm']);
     if ($realm == "Ares") {
         $TBC = TRUE;    // tbc doesnt have achievements
     } else {
         $TBC = FALSE;
     }
 }
+if (isset($_GET['cron'])) {
+    $cron_on = true;
+} else {
+    $cron_on = false;
+}
 
 include 'getparser_image.php';
 
-$DEBUGGING_ON = FALSE;
 //$DEBUGGING_ON = TRUE;
+$DEBUGGING_ON = FALSE;
+
 global $posunto;
 $posunZhora = 26;
 $posunN = 20;
@@ -521,7 +523,7 @@ if ($TBC == FALSE) {
 
 /* SHOW and SAVE FILE */
 if (!$DEBUGGING_ON) {
-    if (!(filter_input(INPUT_GET, 'cron'))) {
+    if (!$cron_on) {
         header("Content-type: image/png");
         imagepng($image); //zobrazi v prehliadaci
     }
