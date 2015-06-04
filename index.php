@@ -1,4 +1,7 @@
-<?php include 'functions.php'; ?>
+<?php
+include 'functions.php'; 
+include 'allowed_realms.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,9 +30,11 @@
                     <input id="textove_pole" type="text" name="postava" value="<?= getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
                                 this.value = '';" required />
                     <select id="realm" name="realm">
-                        <option value="Artemis" <?= SelectRealm("Artemis"); ?>>Artemis</option>
-                        <option value="Hyperion" <?= SelectRealm("Hyperion"); ?>>Hyperion</option>
-                        <option value="Ares" <?= SelectRealm("Ares"); ?>>Ares</option>
+                        <?php 
+                            foreach ($allowed_realms as $key => $value) {
+                                echo allowed_realms($value,$key);
+                            }
+                        ?>
                     </select>
                     <input type="submit" name="submit" class="button" /><br /><br />
                     <div id="skrtatka">

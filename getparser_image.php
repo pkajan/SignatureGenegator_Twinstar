@@ -40,7 +40,7 @@ if (filter_var($_GET['parry'],        FILTER_VALIDATE_FLOAT)) {	$parry        = 
 if (filter_var($_GET['block'],        FILTER_VALIDATE_FLOAT)) {	$block        = filter_var($_GET['block'],        FILTER_VALIDATE_FLOAT);	} else { 	$block = 0;}
 if (filter_var($_GET['haste'],        FILTER_VALIDATE_FLOAT)) {	$haste        = filter_var($_GET['haste'],        FILTER_VALIDATE_FLOAT);	} else { 	$haste = 0;}
 
-
+if (sizeof(filter_var($_GET['realm'],    FILTER_SANITIZE_STRING)) != 0) { $realm    = filter_var($_GET['realm'],     FILTER_SANITIZE_STRING);}
 if (sizeof(filter_var($_GET['prefix'],    FILTER_SANITIZE_STRING)) != 0) { $prefix    = filter_var($_GET['prefix'],     FILTER_SANITIZE_STRING);}
 if (sizeof(filter_var($_GET['suffix'],    FILTER_SANITIZE_STRING)) != 0) { $suffix    = filter_var($_GET['suffix'],     FILTER_SANITIZE_STRING);}
 if (sizeof(filter_var($_GET['guilda'],    FILTER_SANITIZE_STRING)) != 0) { $guilda    = filter_var($_GET['guilda'],     FILTER_SANITIZE_STRING);}

@@ -5,13 +5,8 @@ include_once 'functions.php';
 $image = imagecreatetruecolor(450, 80);
 
 
-if (filter_var($_GET['realm'])) {
-    $realm = filter_var($_GET['realm']);
-    if ($realm == "Ares") {
-        $TBC = TRUE;    // tbc doesnt have achievements
-    } else {
-        $TBC = FALSE;
-    }
+if (filter_var($_GET['realm_type'])) {
+    $realm_type = filter_var($_GET['realm_type']);
 }
 if (isset($_GET['cron'])) {
     $cron_on = true;
@@ -21,8 +16,9 @@ if (isset($_GET['cron'])) {
 
 include 'getparser_image.php';
 
-//$DEBUGGING_ON = TRUE;
+
 $DEBUGGING_ON = FALSE;
+//$DEBUGGING_ON = TRUE;
 
 global $posunto;
 $posunZhora = 26;
@@ -63,7 +59,7 @@ if (empty($guilda_show)) {
 if (empty($achievy_show)) {
     $textAchievy = null;
 } else {
-    if ($TBC == FALSE) {
+    if ($realm_type == "wotlk" or $realm_type == "cata") {
         $textAchievy = $achievyearn . " / " . $achievytotal . " [" . $achievy . "]";
     } else {
         $textAchievy = null;
@@ -516,7 +512,7 @@ $rozmerYS2 = imagesy($spec2);
 
 //imagecopymerge(zaklad,vkladany, vpravo, dole,	0, 0, x, y,  transparentnost);
 imagecopymerge($image, $avatar, 5 + $korekcia, 5 + $korekciaH, 0, 0, $rozmerX, $rozmerY, 100);
-if ($TBC == FALSE) {
+if ($realm_type != "wotlk" or $realm_type != "cata" ) {
     imagecopymerge($image, $spec1, 2, 55, 0, 0, $rozmerXS1, $rozmerYS1, 100);
     imagecopymerge($image, $spec2, 60, 55, 0, 0, $rozmerXS2, $rozmerYS2, 100);
 }

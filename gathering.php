@@ -19,6 +19,9 @@ if (!empty($realm) && !empty($postava)) {
     $link = "http://armory.twinstar.cz/character-sheet.xml?r=$realm&cn=$postava";
     $link2 = "http://armory.twinstar.cz/character-achievements.xml?r=$realm&cn=$postava"; //nacitanie achievov
 
+    $realm_type = array_search($realm, $allowed_realms);
+
+
     if (isset($realm) && isset($postava)) {
         $xml = pull_xml($link);
         $xml2 = pull_xml($link2);
@@ -83,22 +86,27 @@ if (!empty($realm) && !empty($postava)) {
             } else {
                 $char_level = $level_show = null;
             }
-
-            if ((filter_input(INPUT_POST, 'spec_show'))) {
-                foreach ($xml->characterInfo->characterTab->talentSpecs->talentSpec as $talentSpec) {
-                    if ($talentSpec['active'] == "1") /* active spec */
-                        $activeSpec = $talentSpec['prim'];
-                    if ($talenty1 == null) {
-                        $talenty1 = $talentSpec['prim'];
-                    } else {
-                        $talenty2 = $talentSpec['prim'];
+            if ($realm_type != "vanilla") {
+                if ((filter_input(INPUT_POST, 'spec_show'))) {
+                    foreach ($xml->characterInfo->characterTab->talentSpecs->talentSpec as $talentSpec) {
+                        if ($talentSpec['active'] == "1") /* active spec */
+                            $activeSpec = $talentSpec['prim'];
+                        if ($talenty1 == null) {
+                            $talenty1 = $talentSpec['prim'];
+                        } else {
+                            $talenty2 = $talentSpec['prim'];
+                        }
                     }
+                    $spec_show = filter_input(INPUT_POST, 'spec_show');
+                    $showtalentR = TRUE;
+                } else {
+                    $talenty1 = $talenty2 = $spec_show = null;
                 }
-                $spec_show = filter_input(INPUT_POST, 'spec_show');
-                $showtalentR = TRUE;
-            } else {
-                $talenty1 = $talenty2 = $spec_show = null;
+            }else{
+                $activeSpec = null;
+                $spec_show = 0;
             }
+
 
             /* ------------------------------------------ */
             if ((filter_input(INPUT_POST, 'hp_show'))) {
@@ -242,6 +250,7 @@ if (!empty($realm) && !empty($postava)) {
                     . "&amp;parry_show=$parry_show"
                     . "&amp;block_show=$block_show"
                     . "&amp;haste_show=$haste_show"
+                    . "&amp;realm_type=$realm_type"
             ;
             $link = str_replace("&", "&amp;", $link);
             $odkaz = str_replace(" ", "%20", $odkaz);
