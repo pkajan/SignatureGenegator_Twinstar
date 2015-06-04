@@ -86,7 +86,7 @@ if (!empty($realm) && !empty($postava)) {
             } else {
                 $char_level = $level_show = null;
             }
-            if ($realm_type != "vanilla") {
+            if ($realm_type != "vanilla" and $realm_type != "tbc") {
                 if ((filter_input(INPUT_POST, 'spec_show'))) {
                     foreach ($xml->characterInfo->characterTab->talentSpecs->talentSpec as $talentSpec) {
                         if ($talentSpec['active'] == "1") /* active spec */
