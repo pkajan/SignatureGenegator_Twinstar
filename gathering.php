@@ -49,7 +49,7 @@ if (!empty($realm) && !empty($postava)) {
                 $showpictR = TRUE;
             } else {
                 $armory_show = null;
-            }
+            } 
             if ((filter_input(INPUT_POST, 'server_show'))) {
                 $server_show = filter_input(INPUT_POST, 'server_show');
                 $showservR = TRUE;
@@ -81,10 +81,11 @@ if (!empty($realm) && !empty($postava)) {
             }
             if ((filter_input(INPUT_POST, 'level_show'))) {
                 $char_level = $xml->characterInfo->character['level'];
-                $level_show = filter_input(INPUT_POST, 'level_show');
+                $level_show = 1;
                 $showlvlR = TRUE;
             } else {
-                $char_level = $level_show = null;
+                $char_level = $xml->characterInfo->character['level'];
+                $level_show = null;
             }
             if ($realm_type != "vanilla" and $realm_type != "tbc") {
                 if ((filter_input(INPUT_POST, 'spec_show'))) {

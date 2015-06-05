@@ -70,6 +70,7 @@ if (empty($hk_show)) {
 } else {
     $textHonorK = $honork;
 }
+
 if (empty($level_show)) {
     $textLvl = null;
 } else {
@@ -483,7 +484,7 @@ $spec2 = imagecreatefromstring(file_get_contents($spec2));
 /* AVATAR z ARMORY */
 if ($armory_show == 1) {
     switch ($level) {
-        case ($level <= 85):
+        case ($level >= 80 && $level <= 85):
             $avatar = "images/wow-80/" . $genderId . "-" . $raceId . "-" . $classId . ".gif";
             break;
         case ($level >= 70 && $level < 80):
