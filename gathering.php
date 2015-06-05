@@ -102,7 +102,7 @@ if (!empty($realm) && !empty($postava)) {
                     $spec_show = 1;
                     $showtalentR = TRUE;
                 } else {
-                    $talenty1 = $talenty2 = $spec_show = null;
+                    $talenty1 = $talenty2 = $spec_show = $activeSpec = null;
                 }
             } else {
                 $activeSpec = null;
