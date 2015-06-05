@@ -3,5 +3,5 @@ nbproject/project.properties
 nbproject/project.xml
 /cronscript.log
 /signature.log
-/signatures/
+/signatures/*.png
 /backup/
