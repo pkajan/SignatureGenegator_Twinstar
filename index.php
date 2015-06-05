@@ -1,5 +1,5 @@
 <?php
-include 'functions.php'; 
+include 'functions.php';
 include 'allowed_realms.php';
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ include 'allowed_realms.php';
     $chBT = 'onchange="countCheckedBoxes(this);Color(); " ' . 'type="checkbox"';
     ?>
     <body onload="countCheckedBoxes(this);Color();">
-        
+
         <div id="hlavicka">
             <span id="temp">If you find any bugs please send me a <a href="http://forum.twinstar.cz/private.php?do=newpm&amp;u=10520" onclick="return !window.open(this.href);">PM</a>.</span><br />
             <a href="http://twinstar.cz/" onclick="return !window.open(this.href);">TwinStar.cz</a> |
@@ -30,10 +30,10 @@ include 'allowed_realms.php';
                     <input id="textove_pole" type="text" name="postava" value="<?= getCharName(); ?>" onfocus="if (this.value === this.defaultValue)
                                 this.value = '';" required />
                     <select id="realm" name="realm">
-                        <?php 
-                            foreach ($allowed_realms as $key => $value) {
-                                echo allowed_realms($value,$key);
-                            }
+                        <?php
+                        foreach ($allowed_realms as $key => $value) {
+                            echo allowed_realms($value, $key);
+                        }
                         ?>
                     </select>
                     <input type="submit" name="submit" class="button" /><br /><br />
@@ -63,7 +63,7 @@ include 'allowed_realms.php';
 
 
 
-        <?php include_once 'gathering.php'; ?>
+<?php include_once 'gathering.php'; ?>
 
         <div class="reklama">
             <!-- REKLAMA, nemusi byt validne -->
@@ -72,7 +72,7 @@ include 'allowed_realms.php';
         </div>
         <div id="changelog">
             <table id="spoiler_text" style="display: none;">
-                <?php include_once 'changelog.html'; ?>
+<?php include_once 'changelog.html'; ?>
             </table>
         </div>
         <div id="changelog_button">

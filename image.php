@@ -513,7 +513,7 @@ $rozmerYS2 = imagesy($spec2);
 
 //imagecopymerge(zaklad,vkladany, vpravo, dole,	0, 0, x, y,  transparentnost);
 imagecopymerge($image, $avatar, 5 + $korekcia, 5 + $korekciaH, 0, 0, $rozmerX, $rozmerY, 100);
-if ($realm_type == "wotlk" or $realm_type == "cata" ) {
+if ($realm_type == "wotlk" or $realm_type == "cata") {
     imagecopymerge($image, $spec1, 2, 55, 0, 0, $rozmerXS1, $rozmerYS1, 100);
     imagecopymerge($image, $spec2, 60, 55, 0, 0, $rozmerXS2, $rozmerYS2, 100);
 }

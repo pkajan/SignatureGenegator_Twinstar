@@ -45,20 +45,20 @@ if (!empty($realm) && !empty($postava)) {
             $stat1 = $stat2 = $stat3 = $stat4 = $stat5 = $stat6 = $stat7 = $stat8 = $stat9 = 'N';
 
             if ((filter_input(INPUT_POST, 'armory_show'))) {
-                $armory_show = filter_input(INPUT_POST, 'armory_show');
+                $armory_show = 1;
                 $showpictR = TRUE;
             } else {
                 $armory_show = null;
-            } 
+            }
             if ((filter_input(INPUT_POST, 'server_show'))) {
-                $server_show = filter_input(INPUT_POST, 'server_show');
+                $server_show = 1;
                 $showservR = TRUE;
             } else {
                 $server_show = null;
             }
             if ((filter_input(INPUT_POST, 'guilda_show'))) {
                 $guildName = $xml->characterInfo->character['guildName'];
-                $guilda_show = filter_input(INPUT_POST, 'guilda_show');
+                $guilda_show = 1;
                 $showguildR = TRUE;
             } else {
                 $guildName = $guilda_show = null;
@@ -67,14 +67,14 @@ if (!empty($realm) && !empty($postava)) {
                 $achievpoints = $xml->characterInfo->character['points'];
                 $achievearned = $xml2->achievements->summary->c['earned'];
                 $achievtotal = $xml2->achievements->summary->c['total'];
-                $achievy_show = filter_input(INPUT_POST, 'achievy_show');
+                $achievy_show = 1;
                 $showachR = TRUE;
             } else {
                 $achievpoints = $achievearned = $achievtotal = $achievy_show = null;
             }
             if ((filter_input(INPUT_POST, 'hk_show'))) {
                 $honorkills = $xml->characterInfo->character['kills'];
-                $hk_show = filter_input(INPUT_POST, 'hk_show');
+                $hk_show = 1;
                 $showhkR = TRUE;
             } else {
                 $honorkills = $hk_show = null;
@@ -90,20 +90,21 @@ if (!empty($realm) && !empty($postava)) {
             if ($realm_type != "vanilla" and $realm_type != "tbc") {
                 if ((filter_input(INPUT_POST, 'spec_show'))) {
                     foreach ($xml->characterInfo->characterTab->talentSpecs->talentSpec as $talentSpec) {
-                        if ($talentSpec['active'] == "1") /* active spec */
+                        if ($talentSpec['active'] == "1") /* active spec */ {
                             $activeSpec = $talentSpec['prim'];
+                        }
                         if ($talenty1 == null) {
                             $talenty1 = $talentSpec['prim'];
                         } else {
                             $talenty2 = $talentSpec['prim'];
                         }
                     }
-                    $spec_show = filter_input(INPUT_POST, 'spec_show');
+                    $spec_show = 1;
                     $showtalentR = TRUE;
                 } else {
                     $talenty1 = $talenty2 = $spec_show = null;
                 }
-            }else{
+            } else {
                 $activeSpec = null;
                 $spec_show = 0;
             }
@@ -112,7 +113,7 @@ if (!empty($realm) && !empty($postava)) {
             /* ------------------------------------------ */
             if ((filter_input(INPUT_POST, 'hp_show'))) {
                 $hp = $xml->characterInfo->characterTab->characterBars->health['effective'];
-                $hp_show = filter_input(INPUT_POST, 'hp_show');
+                $hp_show = 1;
                 $for_javascript++;
                 $stat1 = TRUE;
             } else {
@@ -121,7 +122,7 @@ if (!empty($realm) && !empty($postava)) {
 
             if ((filter_input(INPUT_POST, 'mana_show'))) {
                 $mana = $xml->characterInfo->characterTab->characterBars->secondBar['effective'];
-                $mana_show = filter_input(INPUT_POST, 'mana_show');
+                $mana_show = 1;
                 $for_javascript++;
                 $stat2 = TRUE;
             } else {
@@ -136,7 +137,7 @@ if (!empty($realm) && !empty($postava)) {
                 $arcane = $xml->characterInfo->characterTab->spell->bonusDamage->arcane['value'];
                 $sp = min($holy, $fire, $nature, $frost, $shadow, $arcane);
                 $heal = $xml->characterInfo->characterTab->spell->bonusHealing['value'];
-                $sph_show = filter_input(INPUT_POST, 'sph_show');
+                $sph_show = 1;
                 $for_javascript++;
                 $stat3 = TRUE;
             } else {
@@ -145,7 +146,7 @@ if (!empty($realm) && !empty($postava)) {
             if ((filter_input(INPUT_POST, 'ap_show'))) {
                 $ap = $xml->characterInfo->characterTab->melee->power['effective'];
                 $rap = $xml->characterInfo->characterTab->ranged->power['effective'];
-                $ap_show = filter_input(INPUT_POST, 'ap_show');
+                $ap_show = 1;
                 $for_javascript++;
                 $stat4 = TRUE;
             } else {
@@ -161,7 +162,7 @@ if (!empty($realm) && !empty($postava)) {
                 $sc = number_format(($nature + $holy + $shadow + $arcane + $frost + $fire) / 6, 2);
                 $mc = number_format((float) $xml->characterInfo->characterTab->melee->critChance['percent'], 2);
                 $rc = number_format((float) $xml->characterInfo->characterTab->ranged->critChance['percent'], 2);
-                $mrsc_show = filter_input(INPUT_POST, 'mrsc_show');
+                $mrsc_show = 1;
                 $for_javascript++;
                 $stat5 = TRUE;
             } else {
@@ -169,7 +170,7 @@ if (!empty($realm) && !empty($postava)) {
             }
             if ((filter_input(INPUT_POST, 'dodge_show'))) {
                 $dodge = number_format((float) $xml->characterInfo->characterTab->defenses->dodge['percent'], 2);
-                $dodge_show = filter_input(INPUT_POST, 'dodge_show');
+                $dodge_show = 1;
                 $for_javascript++;
                 $stat6 = TRUE;
             } else {
@@ -177,7 +178,7 @@ if (!empty($realm) && !empty($postava)) {
             }
             if ((filter_input(INPUT_POST, 'parry_show'))) {
                 $parry = number_format((float) $xml->characterInfo->characterTab->defenses->parry['percent'], 2);
-                $parry_show = filter_input(INPUT_POST, 'parry_show');
+                $parry_show = 1;
                 $for_javascript++;
                 $stat7 = TRUE;
             } else {
@@ -185,7 +186,7 @@ if (!empty($realm) && !empty($postava)) {
             }
             if ((filter_input(INPUT_POST, 'block_show'))) {
                 $block = number_format((float) $xml->characterInfo->characterTab->defenses->block['percent'], 2);
-                $block_show = filter_input(INPUT_POST, 'block_show');
+                $block_show = 1;
                 $for_javascript++;
                 $stat8 = TRUE;
             } else {
@@ -193,7 +194,7 @@ if (!empty($realm) && !empty($postava)) {
             }
             if ((filter_input(INPUT_POST, 'haste_show'))) {
                 $haste = $xml->characterInfo->characterTab->spell->hasteRating['hasteRating'];
-                $haste_show = filter_input(INPUT_POST, 'haste_show');
+                $haste_show = 1;
                 $for_javascript++;
                 $stat9 = TRUE;
             } else {
@@ -290,4 +291,3 @@ if (!empty($realm) && !empty($postava)) {
     }
     print "</div>";
 }
-?>

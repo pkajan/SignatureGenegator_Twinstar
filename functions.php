@@ -137,6 +137,6 @@ function returnNULL($str) {
     }
 }
 
-function allowed_realms($name,$datadisk_type) {
-    return "<option value=\"" . $name ."\" ". SelectRealm($name) . ">$name ($datadisk_type)</option>\n";
+function allowed_realms($name, $datadisk_type) {
+    return "<option value=\"" . $name . "\" " . SelectRealm($name) . ">$name ($datadisk_type)</option>\n";
 }
