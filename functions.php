@@ -74,9 +74,9 @@ function getCharName() {
 }
 
 function SelectRealm($realm_name) {
-    if ((filter_var($_POST['realm']))) {
+    if ((isset($_POST['realm']))) {
         if (filter_var($_POST['realm']) == $realm_name) {
-            return "selected=\"selected\"";
+            return " selected=\"selected\"";
         }
     } else {
         return '';
@@ -138,5 +138,5 @@ function returnNULL($str) {
 }
 
 function allowed_realms($name, $datadisk_type) {
-    return "<option value=\"" . $name . "\" " . SelectRealm($name) . ">$name ($datadisk_type)</option>\n";
+    return "<option value=\"" . $name . "\"" . SelectRealm($name) . ">$name ($datadisk_type)</option>\n";
 }
