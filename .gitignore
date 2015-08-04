@@ -5,3 +5,5 @@ nbproject/project.xml
 /signature.log
 /signatures/*.png
 /backup/
+*.sublime-project
+*.sublime-workspace

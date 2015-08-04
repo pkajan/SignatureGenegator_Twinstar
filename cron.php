@@ -1,6 +1,7 @@
 <?php
 
 include_once 'functions.php';
+include_once 'allowed_realms.php';
 $aktualneUmiestnenie = curPageURL();
 
 $mtime = microtime();
@@ -145,6 +146,7 @@ if (is_file($filename)) {
                     /* pouzite premenne */
                     $char_name = $xml->characterInfo->character['name'];
                     $realm = $xml->characterInfo->character['realm'];
+                    $realm_type = array_search($realm, $allowed_realms);
                     $char_title_suffix = apostropheStupido($xml->characterInfo->character['suffix']); //titul za menom
                     $char_title_prefix = apostropheStupido($xml->characterInfo->character['prefix']); //titul pred menem
                     $frakcia = $xml->characterInfo->character['factionId'];
@@ -358,6 +360,8 @@ if (is_file($filename)) {
                     $_GET['parry_show'] = "$parry_show";
                     $_GET['block_show'] = "$block_show";
                     $_GET['haste_show'] = "$haste_show";
+
+                    $_GET['realm_type'] = "$realm_type";
                     $_GET['cron'] = true;
 
                     repeat($postava, $realm, $showpictR, $showservR, $showguildR, $showachR, $showhkR, $showlvlR, $showtalentR, $stat1, $stat2, $stat3, $stat4, $stat5, $stat6, $stat7, $stat8, $stat9, "1");
