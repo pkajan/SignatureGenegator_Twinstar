@@ -5,6 +5,7 @@ include 'allowed_realms.php';
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset='utf-8'>
         <meta name="keywords" content="siganture generator wow" />
         <meta name="author" content="Peter Kajan alias Revenge" />
         <meta name="description" content="Signature generator" />
